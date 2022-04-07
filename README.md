@@ -1,3 +1,4 @@
+3D CNN models for brain age prediction.
 
 - resnet5.py : Brain age prediction using deep learning uncovers associated sequence variants
 (https://www.nature.com/articles/s41467-019-13163-9)
