@@ -55,5 +55,6 @@ class CNN3D(nn.Module):
         x = self.avgpool(x)
         x = self.dropout(x)
         x = self.classifier(x)
-
+        x = x.view(x.shape[0], -1)
+        
         return x
