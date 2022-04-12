@@ -11,3 +11,8 @@
 - vgg13.py : Predicting Brain Age of Healthy Adults Based on Structural MRI Parcellation Using Convolutional Neural Networks
 (https://www.frontiersin.org/articles/10.3389/fneur.2019.01346/full
 <img width="745" alt="image" src="https://user-images.githubusercontent.com/45024298/162911578-32631fa9-53eb-408c-9e19-c40a86160a5e.png">
+
+- resnet26.py : Improving Individual Brain Age Prediction Using an Ensemble Deep Learning Framework
+(https://www.frontiersin.org/articles/10.3389/fpsyt.2021.626677/full)
+<img width="651" alt="image" src="https://user-images.githubusercontent.com/45024298/162928905-9208689c-2102-416b-a022-c4ca1f216c9d.png">
+* For information not specified in the paper, estimates are used
