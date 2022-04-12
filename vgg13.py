@@ -28,7 +28,7 @@ class CNN3D(nn.Module):
 
         self.fc1 = nn.Linear(4608, 4608)
         self.fc2 = nn.Linear(4608, 4608)
-        self.fc3 = nn.Linear(4608, 1)
+        self.fc3 = nn.Linear(4608, n_classes)
         self.act = nn.Sigmoid()
 
     def forward(self,x):
