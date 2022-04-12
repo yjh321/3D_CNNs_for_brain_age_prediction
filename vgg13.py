@@ -29,7 +29,7 @@ class CNN3D(nn.Module):
         self.fc1 = nn.Linear(4608, 4608)
         self.fc2 = nn.Linear(4608, 4608)
         self.fc3 = nn.Linear(4608, n_classes)
-        self.act = nn.Sigmoid()
+        # self.act = nn.Sigmoid()
 
     def forward(self,x):
         # input size = (B, 1, 121, 145, 121)
@@ -73,6 +73,6 @@ class CNN3D(nn.Module):
         x = self.fc1(x)
         x = self.fc2(x)
         x = self.fc3(x)
-        x = self.act(x)
+        # x = self.act(x)
    
         return x
