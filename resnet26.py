@@ -63,6 +63,9 @@ class ResNet(nn.Module):
         super(ResNet, self).__init__()
         self.in_planes = 16
         self.conv1 = nn.Conv3d(1, 16, kernel_size=(7, 7, 7), stride=(2, 2, 2), bias=False)
+        self.bn1 = nn.BatchNorm3d(self.in_planes)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool3d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, 64, 1, shortcut_type, stride=2)
         self.layer2 = self._make_layer(block, 64, 2, shortcut_type, stride=1)
         self.layer3 = self._make_layer(block, 128, 1, shortcut_type, stride=2)
@@ -71,7 +74,7 @@ class ResNet(nn.Module):
         self.layer6 = self._make_layer(block, 256, 2, shortcut_type, stride=1)
         self.layer7 = self._make_layer(block, 512, 1, shortcut_type, stride=2)
         self.layer8 = self._make_layer(block, 512, 2, shortcut_type, stride=1)
-        self.gap = nn.AvgPool3d(kernel_size=(4, 5, 4), stride=1, padding=0)
+        self.gap = nn.AvgPool3d(kernel_size=(2, 3, 2), stride=1, padding=0)
         
         self.fc = nn.Linear(512, n_classes)
 
@@ -121,6 +124,10 @@ class ResNet(nn.Module):
 
     def forward(self, x):
         x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.maxpool(x)
+
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
@@ -129,6 +136,7 @@ class ResNet(nn.Module):
         x = self.layer6(x)
         x = self.layer7(x)
         x = self.layer8(x)
+  
         x = self.gap(x)
         x = x.view(x.size(0), -1)
         x = self.fc(x)
